@@ -1,0 +1,7 @@
+{
+  "contacts": [
+    { "id": 1, "name": "Oji", "number": "089538016685" },
+    { "id": 2, "name": "Omi", "number": "089532910371" },
+    { "id": 3, "name": "Babi", "number": "089513813193" }
+  ]
+}
