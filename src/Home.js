@@ -7,12 +7,7 @@ const Home = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const handleDelete = (e) => {
-    const newContacs = contacs.filter((items) => items.id !== e);
-    setContacs(newContacs);
-  };
-
-  useEffect(() => {
+  const fetchContact = () => {
     API.get("/contacts")
       .then((res) => {
         setContacs(res.data);
@@ -23,6 +18,15 @@ const Home = () => {
       .finally(() => {
         setLoading(false);
       });
+  };
+
+  const handleDelete = (e) => {
+    const newContacs = contacs.filter((items) => items.id !== e);
+    setContacs(newContacs);
+  };
+
+  useEffect(() => {
+    fetchContact();
   }, []);
   return (
     <div className="px-5 mt-5">
@@ -32,7 +36,7 @@ const Home = () => {
         <ContactList
           contacs={contacs}
           title="All Contacts"
-          onDelete={handleDelete}
+          onDelete={fetchContact}
         />
       )}
     </div>

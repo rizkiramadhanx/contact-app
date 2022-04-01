@@ -1,6 +1,14 @@
+import { Link } from "react-router-dom";
 import React from "react";
+import API from "./api/contacts-api";
 
 const ContactList = ({ contacs, title, onDelete }) => {
+  const HandleDeleteContact = (id) => {
+    API.delete("/contacts/" + id).then(() => {
+      onDelete();
+    });
+  };
+
   return (
     <React.Fragment>
       <h1 className="font-bold text-xl mb-2">{title}</h1>
@@ -15,12 +23,12 @@ const ContactList = ({ contacs, title, onDelete }) => {
           </div>
           <div>
             <button className="bg-green-500 mr-3 px-3 py-2 rounded-md hover:bg-green-600">
-              Edit
+              <Link to={"/edit/" + items.id}>Edit</Link>
             </button>
             <button
               className="bg-red-400 px-3 py-2 rounded-md hover:bg-red-600"
               onClick={() => {
-                onDelete(items.id);
+                HandleDeleteContact(items.id);
               }}
             >
               Delete

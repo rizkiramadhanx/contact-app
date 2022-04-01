@@ -1,21 +1,24 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 const Navbar = () => {
   return (
     <div className="bg-gray-200 flex h-14 justify-between items-center p-5">
       <div className="text-xl font-semibold">Phone Contact</div>
       <ul className="flex font-normal">
-        <Link
+        <NavLink
+          exact
+          activeClassName="bg-gray-400"
           to="/"
-          className="mr-3 py-1 px-2 rounded-md hover:bg-gray-400 hover:text-white"
+          className="mr-3 py-1 px-2 rounded-sm"
         >
           Home
-        </Link>
-        <Link
+        </NavLink>
+        <NavLink
+          activeClassName="bg-gray-400"
           to="/create"
-          className="mr-3 py-1 px-2 rounded-md hover:bg-gray-400 hover:text-white"
+          className="mr-3 py-1 px-2 rounded-sm"
         >
           New Contact
-        </Link>
+        </NavLink>
       </ul>
     </div>
   );
